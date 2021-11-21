@@ -145,3 +145,57 @@ function runProgram(input) {
     
     
   }
+
+//  refine code  ----------------------------------------------------------------- refine code
+
+function runProgram(input) {
+ 
+    input=input.split('\n');
+    const t=+input[0];
+    const q1=[];
+    const q2=[];
+    const q3=[];
+    const q4=[];
+    const masterQ=[];
+    for(let i=1;i<=t;i++){
+        
+        let query=input[i].split(' ');
+        //console.log(query)
+        if(query[0]==='E')      add(query) ;
+        else                    console.log(remove()) ;
+        
+    }
+    function add(query){
+        let clubName = +query[1];
+        let rollNum  = +query[2];
+        
+        if(clubName == 1) q1.push(rollNum);
+        else if(clubName == 2) q2.push(rollNum);
+        else if(clubName == 3) q3.push(rollNum);
+        else if(clubName == 4) q4.push(rollNum);
+        
+        if(!masterQ.includes(clubName)) masterQ.push(clubName);
+    }
+    function remove(){
+        let clubName = +masterQ[0];
+        let rollNum = -Infinity;
+        if (clubName == 1){
+            rollNum = q1.shift();
+            if(q1.length == 0) masterQ.shift()
+        }
+        else if (clubName == 2){
+            rollNum = q2.shift();
+            if(q2.length == 0) masterQ.shift()
+        }
+        else if (clubName == 3){
+            rollNum = q3.shift();
+            if(q3.length == 0) masterQ.shift()
+        }
+        else if (clubName == 4){
+            rollNum = q4.shift();
+            if(q4.length == 0) masterQ.shift()
+        }
+        return clubName+" "+rollNum
+    }
+    
+  }
