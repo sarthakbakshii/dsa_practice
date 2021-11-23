@@ -82,8 +82,6 @@ const wayTwo = (size,len,arr) =>{
 }     
 // Way - 2 |----------------------| QUEUE |-----------------------------------------------
 
-
-
 function runProgram(input) {
   a = input.split("\n");
   const testcase = + a[0];
