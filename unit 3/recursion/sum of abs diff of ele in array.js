@@ -102,3 +102,15 @@ function runProgram(input) {
   }
   
 }
+
+
+// ----------------------------| easy code |-----------------------------
+
+    function sumWithRec(n,arr){
+        if(n===1){
+            return 0;
+        } else {
+            return (Math.abs(arr[n-1]-arr[n-2]) + sumWithRec(n-1, arr));
+        }
+    }
+    console.log(sumWithRec(n,arr))
