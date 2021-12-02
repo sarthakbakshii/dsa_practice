@@ -29,8 +29,10 @@ Sample Output 1
 ad
 bc
 ------------------------------------------------------------------------------------------------------------------*/
-
-const q3 = str =>{
+// ----------------------------------------//
+// ----------- way 1 || stack -------------//
+// ----------------------------------------//
+const wayOne = str =>{
     let stack = [];
     let output = "";
     for(let i = 0 ; i < str.length ; i++){
@@ -42,11 +44,34 @@ const q3 = str =>{
         }
     }
     // console.log(stack);
-    stack.map( a=> {
-        output += a;
-    })
+    stack.map( a => output += a );
     console.log(output)
 }
+// ----------------------------------------//
+// ----------- way 1 || stack -------------//
+// ----------------------------------------//
+// --------- way 2 || recurssion ----------//
+// ----------------------------------------//
+const wayTwo = (str, i=0,stack = []) =>{
+    
+     if(str.length == i ){   //--base condition
+            let output = "";
+            stack.map( a => output+= a)
+            return output;     
+        }
+    
+        if(str[i] !== "#"){
+            stack.push(str[i])
+        }
+        else if(str[i] == "#"){
+            stack.pop()
+        }
+        
+    return wayTwo(str,i+1,stack)
+}
+// ----------------------------------------//
+// --------- way 2 || recurssion ----------//
+// ----------------------------------------//
 
 function runProgram(input) {
   a = input.split("\n");
@@ -55,9 +80,10 @@ function runProgram(input) {
   for(i = 0 ; i < t ; i++){
       str = a[line];
       line++;
-    //   console.log(str)
-    q3(str)
+      
+        // wayOne(str)
+        console.log( wayTwo(str) );
   }
-  
+
   
 }
