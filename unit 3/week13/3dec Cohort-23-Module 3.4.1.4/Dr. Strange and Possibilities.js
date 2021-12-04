@@ -1,5 +1,8 @@
 /*Dr. Strange and Possibilities
 ------------------------------------------------------------------------------------------------------------------
+https://oj.masaischool.com/contest/2484/problem/04
+Password : 29167
+------------------------------------------------------------------------------------------------------------------
 Description
 
 Dr. Strange has n distinct integers from 1 to n. He uses his mind power and time stone to calculate all the possible subsets using the given n integers. Generate all the possible subsets.
