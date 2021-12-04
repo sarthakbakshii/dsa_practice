@@ -2,6 +2,7 @@ input = "2 4"
 output = "16"
 
 
+
  let[a,b] = input.split(" ").map(Number);
   
   const power = (a,b,t=0) => {
