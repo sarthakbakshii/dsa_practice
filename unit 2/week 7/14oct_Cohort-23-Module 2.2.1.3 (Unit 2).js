@@ -117,7 +117,7 @@ const q4 = (a,counter= 0) =>{
                  for(let i=0;i<a.length;i++){
                     sum += a[i]*a[i];
                 }
-              console.log(sum);
+              // console.log(sum);
 
                 if(sum == 1){
                  return result = true ;
@@ -130,7 +130,7 @@ const q4 = (a,counter= 0) =>{
     return result
 }
 
-// console.log(q4(2))
-// console.log(q4(19))
+console.log(q4(2))
+console.log(q4(19))
 
 // -----------------------

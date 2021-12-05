@@ -34,50 +34,45 @@ Sample Output 1
 
 8 
 ------------------------------------------------------------------------------------------------------------------*/ 
- testcase = "3 3 1";
- let [row,col,N] = testcase.split(" ").map(Number);
-  
-  let board = 
-    [
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0]
-    ];
-  
-  function chess(board,row,col,N){
-      
-    //----- checking if position is valid or not
-    if(row < 0 || col < 0 || row > 9 || col > 9)  return;
-    
-    //----- check if no of moves remaining is zero
-    if(N==0){
-        board[row][col] = 1;
-        return;
+const coordinates = [
+  [-2, -1],
+  [-2, 1],
+  [-1, -2],
+  [1, -2],
+  [2, -1],
+  [2, 1],
+  [-1, 2],
+  [1, 2],
+];
+
+let chess = [];
+for (let i = 0; i < 10; i++) {
+  chess.push(new Array(10).fill(0));
+}
+let count = 0;
+function runProgram(input) {
+  let [row, col, N] = input.split(" ").map(Number);
+  row = row - 1;
+  col = col - 1;
+  followTheKnight(row, col, N);
+  console.log(count);
+}
+
+function followTheKnight(row, col, n) {
+  if (row > 9 || row < 0 || col > 9 || col < 0) {
+    return;
+  }
+  if (n == 0) {
+    if (chess[row][col] == 0) {
+      count++;
+      chess[row][col] = 1;
     }
-        chess(board,row-2,col+1,N-1);
-        chess(board,row-2,col-1,N-1);
-        chess(board,row+2,col+1,N-1);
-        chess(board,row+2,col-1,N-1);
-        chess(board,row-1,col+2,N-1);
-        chess(board,row-1,col-2,N-1);
-        chess(board,row+1,col+2,N-1);
-        chess(board,row+1,col-2,N-1);
+    return;
   }
-  chess(board,row,col,N);
-//   console.log(board)
-
-  let count = 0;
-
-  for(let i = 0 ; i < 10 ; i++){
-      for(let j = 0 ; j < 10 ; j++){
-          if(board[i][j] == 1) count++
-      }
+  for (let i = 0; i < coordinates.length; i++) {
+    let [a, y] = coordinates[i];
+    followTheKnight(row + a, col + y, n - 1);
   }
-  console.log(count)
+}
+
+runProgram(`1 1 2`);
