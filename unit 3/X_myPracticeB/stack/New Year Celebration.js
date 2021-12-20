@@ -1,5 +1,8 @@
 /*
 New Year Celebration
+https://oj.masaischool.com/contest/2362/problem/01
+Password : 29031
+
 Description
 
 New Year Celebration is coming near and DG is hosting a party for it, To make sure the party goes well she wants order in the party.There are two counters one of ice-cream and other for Cold-drinks.
@@ -54,54 +57,63 @@ Sample Output 1
 3
 4
 ---------------------------------------------------------------------------*/
+let stack = [];
+
+const push = (el) => stack.push(el);
+const pop = el => stack.pop();
 
 let que = [];
-let stack = [];
 let front = 0;
 let rear = 0;
 
-function enque(ele){
-    que[rear] = ele;
-    rear++;
+const enQue  = el => {
+    que[rear] = el;
+    rear++
 }
-function deque(){
-    
-    if(front == rear){
-        return -1 ;
+const deQue = () =>{
+    if(front == rear) return -1;
+    let temp = que[ front ];
+    que[ front ] = -Infinity;
+    front++ ;
+
+    return temp;
+}
+const len = () => {
+    return rear - front;
+}
+// ---------------------------------------------------------------------------
+
+const run = input =>{
+    a = input.split("\n");
+    let t = + a[0];
+    let line = 1;
+
+    for( let i = 0 ; i < t ; i++){
+        let [n,k] = a[line].split(" ").map(Number);
+        line++ ;
+        
+        switch (n) {
+            case 1: enQue(k);
+                break;
+            case 2: push(k);
+                break;
+            case 3: console.log( que[ front ]== undefined? -1 : que[front] );
+                break;
+            case 4: console.log( (stack.length == 0) ?-1:stack[stack.length-1] )
+                break;
+            case 5: push( deQue() )
+        
+        }
     }
-    de = que[front];
-    que[front] = -Infinity;
-    front++;
-    return de;
 }
-function len(){
-    return rear-front;
-}
-function push(el){
-    stack.push(el)
-}
-function pop(el){
-    stack.pop(el)
-}
-// ---------------------------------------
-function runProgram(input) {
-  a = input.split("\n");
-  let t = +a[0];
-  
-  let line = 1;
-  for(let i = 0 ; i < t ; i++){
-      let[condition,value] = a[line].split(" ");
-      line++
-      
-    //   console.log(condition,value)
-    if(condition == 1) enque(value);
-    if(condition == 2) push(value);
-    if(condition == 3) console.log(     que[front]==undefined?-1:que[front]          );
-    if(condition == 4) console.log(    (stack.length == 0) ?-1:stack[stack.length-1] )
-    if(condition == 5) push(deque());
-    
-  }
-  
-  
-  
-}
+
+run(
+`7
+1 4
+2 3
+1 2
+3
+4
+5
+4`
+)
