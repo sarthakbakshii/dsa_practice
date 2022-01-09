@@ -45,3 +45,25 @@ Sample 1 Explanation
 ababab, ababbb, bbabab and bbabbb are possible. 
 The first in alphabetical order is ababab.
 ------------------------------------------------------------------------*/
+
+function runProgram(input) {
+    // Write code here
+    input=input.split("\n");
+    let str=input[0];
+    //console.log(str)
+    console.log(ques(str));
+  }
+  
+  function ques(str){
+      str=str.split("");
+      for(let i=0;i<str.length;i++){
+          if(str[i]=="?"){
+              if(str[i-1]=="a" || str[i+1]=="a"){
+                  str[i]="b"
+              }else{
+                  str[i]="a"
+              }
+          }
+      }
+      return str.join("")
+  }

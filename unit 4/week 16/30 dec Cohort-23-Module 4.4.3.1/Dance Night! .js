@@ -43,3 +43,39 @@ Sample Output 1
 
 YES
 ------------------------------------------------------------------------*/
+
+const search = (n,m,b,g) => {
+   
+    let flag = "YES"
+    if( m < n ) return "NO";
+    
+    for( let i = 0 ; i < n ; i ++){
+        // console.log( "boy : ",b[i]," , girl : ", g[i])
+        
+        if( b[i] <= g[i] ){
+             flag = "NO"
+          break;
+        }
+    }
+    
+    return flag
+}
+
+function runProgram(input) {
+  a = input.split("\n");
+  
+  let t = + a[0];
+  let line = 1;
+  for(let i = 0 ; i < t ; i ++ ){
+      let [n,m] = a[line].split(" ").map(Number);
+      line++;
+      let boys = a[line].split(" ").map(Number).sort( (a,b) => a-b );
+      line++;
+      let girls = a[line].split(" ").map(Number).sort( (a,b) => a-b );
+      line++;
+      
+    //   console.log(n,m,boys,girls)
+      console.log( search(n,m,boys,girls) )
+  }
+  
+}

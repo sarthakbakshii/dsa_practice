@@ -56,3 +56,35 @@ The optimal arrangement is :
 The adjacent pair values are 1 for(6-5),3 for(8-5),4 for(10-6),2 for(10-8).
 Since danger value is the maximum value so it's 4.
 ------------------------------------------------------------------------*/
+
+function runProgram(input) {
+  a = input.split("\n");
+  const n = + a[0];
+  const arr = a[1].split(" ")
+              .map(Number)
+              .sort( (a,b) => a - b);
+  
+//   console.log(n,arr)
+  let odd = [];
+  let eve = [];
+  for(let i = 0 ; i < n ; i++ ){
+      if( i %2 == 0) eve.push(arr[i]);
+      else odd.push(arr[i]);
+  }
+  
+//   console.log(odd,eve)
+  
+  for(let i = eve.length - 1 ; i >= 0 ; i --){
+      odd.push(eve[i])
+  }
+  
+//   console.log(odd)
+  
+  let max = 0;
+  for(let j = 0 ; j < odd.length  ; j++){
+      if( Math.abs(odd[j+1]-odd[j]) > max ) max = Math.abs(odd[j+1]-odd[j])
+  }
+  console.log(max)
+  
+  
+}

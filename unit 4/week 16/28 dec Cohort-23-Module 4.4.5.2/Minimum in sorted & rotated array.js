@@ -38,3 +38,24 @@ Sample Output 1
 
 -1
 -----------------------------------------------------*/
+
+
+const search = (arr,n) => {
+    let low = 0 ; 
+    let high = n-1;
+    
+    while( low < high ){
+        
+        let mid = low + Math.floor( (high - low ) / 2 );
+        console.log(`low = ${low}, mid = ${mid} , high = ${high}`)
+        if( arr[mid] > arr[high] ){
+              low = mid + 1
+        }
+        else{
+           high = mid
+        }
+        
+        
+    }
+    return arr[high]
+}
