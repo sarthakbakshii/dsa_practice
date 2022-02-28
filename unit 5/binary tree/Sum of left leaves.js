@@ -68,22 +68,51 @@ Sample Output 1
 // Complete the function below
 
 function sumofLeftLeaves(root){
-
-    let res = 0; 
-    var sum = function(root) {
-        if(root == null) return 
-        if(root.left && root.left.left == null && root.left.right == null) res += root.left.val; 
-        sum(root.left); 
-        sum(root.right); 
-        
-    };
-    sum(root)
-    return res 
-
+    let que = [];
+    let sum = 0;
+    que[0] = root;
+    
+    while( que.length > 0){
+        const node = que.shift();
+        if( node.left ){
+            if(!node.left.left  && !node.left.right ){
+                sum = sum + node.left.val
+            }
+            else{
+                que.push(node.left)
+            }
+        }
+        if(node.right ){
+            que.push(node.right)
+        }
+    }
+    
+    return sum 
 
 }
 
+
+// function sumofLeftLeaves(root){
+
+//     let res = 0; 
+//     var sum = function(root) {
+//         if(root == null) return 
+//         if(root.left && root.left.left == null && root.left.right == null) res += root.left.val; 
+//         sum(root.left); 
+//         sum(root.right); 
+        
+//     };
+//     sum(root)
+//     return res 
+
+
+// }
+
    
+   
+   
+   
+
    
    
    

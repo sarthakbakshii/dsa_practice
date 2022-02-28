@@ -68,12 +68,18 @@ False
 
 function isSameTree(a,b){
     
-     const ans = ldr(a,b) ;
-    //  console.log("ans", ans)
-     if( ans == undefined ){ return true}
-     else {  return false }
+    //  const ans = ldr(a,b) ;
+    //  if( ans == undefined ){ return true}
+    //  else {  return false }
+    
+     if(a !== null || b !== null){
+        if(a.val !== b.val) return false;
+         return isSameTree(a.left,b.left) && isSameTree(a.right,b.right)
+    }
+    else return true
 
 }
+
 function ldr(a,b){
     if(a !== null || b !== null){
         if(a.val !== b.val) return false;
